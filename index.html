@@ -1,69 +1,197 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus - Seu bot definitivo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexus Bot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      text-align: center;
-    }
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d0d0d;
+  color: #f1f1f1;
+}
 
-    .container {
-      padding: 60px 20px;
-    }
+header {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), #000), url("nexusbg.jpg") no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+header h1 {
+  font-size: 4em;
+  font-family: 'Orbitron', sans-serif;
+  color: #ff4757;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 10px #000;
+}
 
-    p {
-      font-size: 20px;
-      color: #ccc;
-    }
+header p {
+  font-size: 1.4em;
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff4757;
+}
 
-    .buttons {
-      margin-top: 30px;
-    }
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #111;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 999;
+}
 
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 15px 30px;
-      background: #5865F2;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+nav a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    .buttons a:hover {
-      background: #404EED;
-    }
+nav a:hover {
+  color: #ff4757;
+}
 
-    footer {
-      margin-top: 50px;
-      color: #555;
-    }
+section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.4em;
+  color: #ffa502;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  color: #ff6b81;
+  margin-bottom: 10px;
+}
+
+.btn-duplo {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-duplo a {
+  background: #ff4757;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-duplo a:hover {
+  background: #ff6b81;
+}
+
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #999;
+}
+
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Nexus</h1>
-    <p>O bot definitivo para moderação, diversão e histórias assustadoras.</p>
-    <div class="buttons">
-      <a href="https://discord.com/oauth2/authorize?client_id=1363917283981791292&permissions=8&integration_type=0&scope=bot+applications.commands" target="_blank">Convidar o Nexus</a>
-      <a href="https://discord.gg/gMC5hczY" target="_blank">Servidor de Suporte</a>
+  <header>
+    <h1>Nexus Bot</h1>
+    <p>Automatize seu servidor com moderação, comandos informativos e histórias assustadoras.</p>
+  </header>  <nav>
+    <a href="#comandos">Comandos</a>
+    <a href="#changelog">Changelog</a>
+    <a href="#faq">FAQ</a>
+    <a href="#convite">Convite</a>
+  </nav>  <section id="comandos">
+    <h2>Comandos</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Moderação</h3>
+        <p>!ban, !kick, !mute, !unmute, !clear</p>
+      </div>
+      <div class="card">
+        <h3>Creepypasta</h3>
+        <p>!creepypasta</p>
+      </div>
+      <div class="card">
+        <h3>Informações</h3>
+        <p>!botinfo, !uptime, !userinfo, !serverinfo</p>
+      </div>
     </div>
-    <footer>
-      <p>© 2025 Nexus Bot. Feito com dedicação.</p>
-    </footer>
-  </div>
+  </section>  <section id="changelog">
+    <h2>Changelog</h2>
+    <div class="card">
+      <p><strong>03/05/2025:</strong> Site oficial lançado!</p>
+      <p><strong>01/05/2025:</strong> Comando !creepypasta adicionado.</p>
+      <p><strong>28/04/2025:</strong> Sistema de moderação completo.</p>
+    </div>
+  </section>  <section id="faq">
+    <h2>FAQ</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Como adiciono o bot?</h3>
+        <p>Clique no botão de convite abaixo.</p>
+      </div>
+      <div class="card">
+        <h3>É gratuito?</h3>
+        <p>Sim! Todas as funções do Nexus são gratuitas.</p>
+      </div>
+      <div class="card">
+        <h3>Tem suporte?</h3>
+        <p>Sim! Entre no nosso servidor de suporte no Discord.</p>
+      </div>
+    </div>
+  </section>  <section id="convite">
+    <h2>Convide o Nexus</h2>
+    <div class="card" style="text-align: center;">
+      <p>Escolha uma das opções abaixo:</p>
+      <div class="btn-duplo">
+        <a href="https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID&scope=bot&permissions=8">Convidar Bot</a>
+        <a href="https://discord.gg/gMC5hczY">Servidor de Suporte</a>
+      </div>
+    </div>
+  </section>  <footer>
+    &copy; 2025 Nexus Bot. Desenvolvido por Tryharder-dev.
+  </footer>
 </body>
 </html>
