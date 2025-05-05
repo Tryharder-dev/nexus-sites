@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -129,26 +130,80 @@
         gap: 10px;
       }
     }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #0d0d0d;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .loader {
+      border: 8px solid #333;
+      border-top: 8px solid #ff4757;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Botão de música */
+    #music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff4757;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 18px;
+      box-shadow: 0 0 10px #ff6b81;
+      cursor: pointer;
+      z-index: 999;
+      transition: background 0.3s;
+    }
+    #music-control:hover {
+      background: #ff6b81;
+    }
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p>Carregando...</p>
+  </div>
+
   <header>
     <h1>Nexus Bot</h1>
     <p>Automatize seu servidor com moderação, informações sobre usuários e servidor. Utilize !help para ver os comandos.</p>
   </header>
+
   <nav>
-    <a href="#sobre" aria-label="Ir para seção sobre o bot">Sobre</a>
-    <a href="#comandos" aria-label="Ir para seção de comandos">Comandos</a>
-    <a href="#changelog" aria-label="Ir para seção de changelog">Changelog</a>
-    <a href="#faq" aria-label="Ir para seção de perguntas frequentes">FAQ</a>
-    <a href="#convite" aria-label="Ir para seção de convite">Convite</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#comandos">Comandos</a>
+    <a href="#changelog">Changelog</a>
+    <a href="#faq">FAQ</a>
+    <a href="#convite">Convite</a>
   </nav>
+
   <section id="sobre">
     <h2>Sobre o Nexus Bot</h2>
     <div class="card" data-aos="fade-up">
       <p>O Nexus Bot foi criado para oferecer ferramentas de moderação, diversão e informação para servidores do Discord. Com comandos simples e poderosos, ele é ideal para manter sua comunidade organizada e engajada.</p>
     </div>
   </section>
+
   <section id="comandos">
     <h2>Comandos</h2>
     <div class="grid">
@@ -166,6 +221,7 @@
       </div>
     </div>
   </section>
+
   <section id="changelog">
     <h2>Changelog</h2>
     <div class="card" data-aos="zoom-in">
@@ -174,6 +230,7 @@
       <p><strong>28/04/2025:</strong> Sistema de moderação completo.</p>
     </div>
   </section>
+
   <section id="faq">
     <h2>FAQ</h2>
     <div class="grid">
@@ -191,6 +248,7 @@
       </div>
     </div>
   </section>
+
   <section id="convite">
     <h2>Convide o Nexus</h2>
     <div class="card" style="text-align: center;" data-aos="flip-up">
@@ -201,11 +259,41 @@
       </div>
     </div>
   </section>
+
   <footer>
     &copy; 2025 Nexus Bot. Desenvolvido por Tryharder. <br>
     <a href="#" style="color:#888; text-decoration:underline;">Política de Privacidade</a>
   </footer>
+
+  <audio id="bg-music" loop>
+    <source src="sua-musica.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-control">▶</button>
+
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init();
+
+    // Preloader
+    window.addEventListener("load", () => {
+      document.getElementById("preloader").style.display = "none";
+    });
+
+    // Música
+    const music = document.getElementById("bg-music");
+    const control = document.getElementById("music-control");
+    let isPlaying = false;
+
+    control.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        control.textContent = "▶";
+      } else {
+        music.play();
+        control.textContent = "⏸";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
 </body>
 </html>
