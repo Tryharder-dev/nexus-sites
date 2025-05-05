@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,18 +6,19 @@
   <meta name="description" content="Nexus Bot - o bot ideal para moderação e diversão no seu servidor Discord!" />
   <meta name="author" content="Tryharder" />
   <link rel="icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #111;
-      color: #f1f1f1;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0e0e12;
+      color: #e0e0e0;
+      line-height: 1.6;
     }
     header {
       height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), #000), url("nexusbg.jpg") no-repeat center/cover;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), #000), url("nexusbg.jpg") center/cover no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -29,246 +29,182 @@
     header h1 {
       font-size: 4em;
       font-family: 'Orbitron', sans-serif;
-      color: #ff4757;
-      margin-bottom: 15px;
+      color: #00adb5;
       text-shadow: 2px 2px 10px #000;
-      animation: fadeIn 2s ease;
     }
     header p {
       font-size: 1.4em;
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ff4757;
+      max-width: 700px;
+      margin-top: 10px;
+      color: #ccc;
     }
     nav {
       position: sticky;
       top: 0;
-      background-color: rgba(17, 17, 17, 0.9);
-      padding: 10px 20px;
+      background: #1a1a1d;
+      padding: 15px 30px;
       display: flex;
       justify-content: center;
-      gap: 20px;
-      z-index: 999;
-      backdrop-filter: blur(10px);
       flex-wrap: wrap;
+      gap: 20px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
     nav a {
-      color: #f1f1f1;
+      color: #f8f8f8;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
       transition: 0.3s;
     }
     nav a:hover {
-      color: #ff4757;
+      color: #00adb5;
     }
     section {
-      padding: 60px 20px;
+      padding: 80px 20px;
       max-width: 1100px;
       margin: auto;
     }
     section h2 {
       text-align: center;
+      font-size: 2.6em;
+      color: #00adb5;
       margin-bottom: 40px;
-      font-size: 2.4em;
-      color: #ffa502;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
     .card {
-      background-color: #1e1e1e;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
-      transition: transform 0.3s ease;
+      background: #1f1f23;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 173, 181, 0.2);
+      transition: transform 0.3s;
     }
     .card:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
     }
     .card h3 {
-      color: #ff6b81;
+      color: #00adb5;
       margin-bottom: 10px;
-    }
-    .card p {
-      color: #bbb;
     }
     .btn-duplo {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-top: 20px;
       flex-wrap: wrap;
+      margin-top: 20px;
     }
     .btn-duplo a {
-      background: #ff4757;
+      background: #00adb5;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 24px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 0 10px #ff6b81;
+      box-shadow: 0 0 10px #00adb5;
       transition: background 0.3s;
     }
     .btn-duplo a:hover {
-      background: #ff6b81;
+      background: #02c9d7;
     }
     footer {
-      background-color: #111;
+      background-color: #1a1a1d;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
+      padding: 30px 15px;
       color: #999;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      font-size: 0.9em;
     }
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
-        gap: 10px;
       }
-    }
-
-    /* Preloader */
-    #preloader {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background-color: #0d0d0d;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .loader {
-      border: 8px solid #333;
-      border-top: 8px solid #ff4757;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 15px;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Cards com imagens e informações */
-    .info-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    .info-card {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
     }
   </style>
 </head>
 <body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="loader"></div>
-    <p>Carregando...</p>
-  </div>
-
   <header>
     <h1>Nexus Bot</h1>
-    <p>Automatize seu servidor com moderação, informações sobre usuários e servidor. Utilize !help para ver os comandos.</p>
-  </header>
-
-  <nav>
+    <p>O bot completo para moderação, diversão e informações no seu servidor Discord. Totalmente gratuito, fácil de usar e sempre atualizado.</p>
+  </header>  <nav>
     <a href="#sobre">Sobre</a>
     <a href="#comandos">Comandos</a>
-    <a href="#changelog">Changelog</a>
+    <a href="#recursos">Recursos</a>
+    <a href="#changelog">Atualizações</a>
     <a href="#faq">FAQ</a>
     <a href="#convite">Convite</a>
-  </nav>
-
-  <section id="sobre">
+  </nav>  <section id="sobre">
     <h2>Sobre o Nexus Bot</h2>
     <div class="card" data-aos="fade-up">
-      <p>O Nexus Bot foi criado para oferecer ferramentas de moderação, diversão e informação para servidores do Discord. Com comandos simples e poderosos, ele é ideal para manter sua comunidade organizada e engajada.</p>
+      <p>Nexus Bot é um assistente avançado para servidores Discord, combinando moderação automática, ferramentas úteis de informação, diversão interativa e suporte contínuo. Ideal para comunidades pequenas ou grandes.</p>
     </div>
-  </section>
-
-  <section id="comandos">
-    <h2>Comandos</h2>
+  </section>  <section id="comandos">
+    <h2>Comandos Disponíveis</h2>
     <div class="grid">
       <div class="card" data-aos="fade-up">
         <h3>Moderação</h3>
-        <p>Comandos como !ban, !kick, !mute, !unmute, !clear ajudam a manter sua comunidade sob controle.</p>
+        <p>!ban, !kick, !mute, !unmute, !clear, entre outros.</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="100">
         <h3>Diversão</h3>
-        <p>Comandos como !creepypasta trazem um toque de mistério e diversão para os membros.</p>
+        <p>!creepypasta, comandos interativos e muito mais.</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="200">
         <h3>Informações</h3>
-        <p>Obtenha dados sobre seu servidor e usuários com comandos como !botinfo, !uptime, !userinfo, !serverinfo.</p>
+        <p>!botinfo, !uptime, !userinfo, !serverinfo e outros.</p>
       </div>
     </div>
-  </section>
-
-  <section id="changelog">
-    <h2>Changelog</h2>
-    <div class="card" data-aos="zoom-in">
-      <p><strong>03/05/2025:</strong> Site oficial lançado!</p>
-      <p><strong>01/05/2025:</strong> Comando !creepypasta adicionado.</p>
-      <p><strong>28/04/2025:</strong> Sistema de moderação completo.</p>
-    </div>
-  </section>
-
-  <section id="faq">
-    <h2>FAQ</h2>
+  </section>  <section id="recursos">
+    <h2>Recursos Exclusivos</h2>
     <div class="grid">
       <div class="card" data-aos="fade-right">
-        <h3>Como adiciono o bot?</h3>
-        <p>Clique no botão de convite abaixo.</p>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <h3>É gratuito?</h3>
-        <p>Sim! Todas as funções do Nexus são gratuitas.</p>
+        <h3>Atualizações Frequentes</h3>
+        <p>Com melhorias semanais e novos comandos.</p>
       </div>
       <div class="card" data-aos="fade-left">
-        <h3>Tem suporte?</h3>
-        <p>Sim! Entre no nosso servidor de suporte no Discord.</p>
+        <h3>100% Gratuito</h3>
+        <p>Nenhuma funcionalidade está bloqueada por pagamento.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>Fácil Integração</h3>
+        <p>Pronto para ser adicionado ao seu servidor em segundos.</p>
       </div>
     </div>
-  </section>
-
-  <section id="convite">
+  </section>  <section id="changelog">
+    <h2>Changelog</h2>
+    <div class="card" data-aos="zoom-in">
+      <p><strong>03/05/2025:</strong> Lançamento do site oficial com design moderno.</p>
+      <p><strong>01/05/2025:</strong> Comando !creepypasta adicionado com histórias assustadoras.</p>
+      <p><strong>28/04/2025:</strong> Sistema completo de moderação ativado.</p>
+    </div>
+  </section>  <section id="faq">
+    <h2>Dúvidas Frequentes</h2>
+    <div class="grid">
+      <div class="card" data-aos="fade-up">
+        <h3>Como adiciono o bot?</h3>
+        <p>Use o botão abaixo para convidar o Nexus ao seu servidor.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>O bot é gratuito?</h3>
+        <p>Sim! Todas as funções estão disponíveis gratuitamente.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>Existe suporte?</h3>
+        <p>Sim! Temos um servidor exclusivo de suporte no Discord.</p>
+      </div>
+    </div>
+  </section>  <section id="convite">
     <h2>Convide o Nexus</h2>
-    <div class="card" style="text-align: center;" data-aos="flip-up">
-      <p>Escolha uma das opções abaixo:</p>
+    <div class="card" data-aos="flip-up" style="text-align:center;">
+      <p>Adicione agora o Nexus Bot ao seu servidor:</p>
       <div class="btn-duplo">
         <a href="https://discord.com/oauth2/authorize?client_id=1363917283981791292&permissions=8&integration_type=0&scope=bot+applications.commands">Convidar Bot</a>
         <a href="https://discord.gg/gMC5hczY">Servidor de Suporte</a>
       </div>
     </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Nexus Bot. Desenvolvido por Tryharder. <br>
-    <a href="#" style="color:#888; text-decoration:underline;">Política de Privacidade</a>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-
-    // Preloader
-    window.addEventListener("load", () => {
-      document.getElementById("preloader").style.display = "none";
-    });
-  </script>
-</body>
+  </section>  <footer>
+    &copy; 2025 Nexus Bot. Desenvolvido por Tryharder.<br>
+    <a href="#" style="color:#aaa; text-decoration:underline;">Política de Privacidade</a>
+  </footer>  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>  <script>AOS.init();</script></body>
 </html>
