@@ -13,7 +13,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0d0d0d;
+      background-color: #111;
       color: #f1f1f1;
     }
     header {
@@ -93,6 +93,9 @@
       color: #ff6b81;
       margin-bottom: 10px;
     }
+    .card p {
+      color: #bbb;
+    }
     .btn-duplo {
       display: flex;
       justify-content: center;
@@ -156,24 +159,17 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Botão de música */
-    #music-control {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ff4757;
-      color: white;
-      border: none;
-      padding: 12px 16px;
-      border-radius: 50%;
-      font-size: 18px;
-      box-shadow: 0 0 10px #ff6b81;
-      cursor: pointer;
-      z-index: 999;
-      transition: background 0.3s;
+    /* Cards com imagens e informações */
+    .info-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
-    #music-control:hover {
-      background: #ff6b81;
+    .info-card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
     }
   </style>
 </head>
@@ -209,15 +205,15 @@
     <div class="grid">
       <div class="card" data-aos="fade-up">
         <h3>Moderação</h3>
-        <p>!ban, !kick, !mute, !unmute, !clear, etc.</p>
+        <p>Comandos como !ban, !kick, !mute, !unmute, !clear ajudam a manter sua comunidade sob controle.</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="100">
         <h3>Diversão</h3>
-        <p>!creepypasta</p>
+        <p>Comandos como !creepypasta trazem um toque de mistério e diversão para os membros.</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="200">
         <h3>Informações</h3>
-        <p>!botinfo, !uptime, !userinfo, !serverinfo</p>
+        <p>Obtenha dados sobre seu servidor e usuários com comandos como !botinfo, !uptime, !userinfo, !serverinfo.</p>
       </div>
     </div>
   </section>
@@ -265,11 +261,6 @@
     <a href="#" style="color:#888; text-decoration:underline;">Política de Privacidade</a>
   </footer>
 
-  <audio id="bg-music" loop>
-    <source src="sua-musica.mp3" type="audio/mpeg">
-  </audio>
-  <button id="music-control">▶</button>
-
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init();
@@ -277,22 +268,6 @@
     // Preloader
     window.addEventListener("load", () => {
       document.getElementById("preloader").style.display = "none";
-    });
-
-    // Música
-    const music = document.getElementById("bg-music");
-    const control = document.getElementById("music-control");
-    let isPlaying = false;
-
-    control.addEventListener("click", () => {
-      if (isPlaying) {
-        music.pause();
-        control.textContent = "▶";
-      } else {
-        music.play();
-        control.textContent = "⏸";
-      }
-      isPlaying = !isPlaying;
     });
   </script>
 </body>
